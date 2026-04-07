@@ -1,0 +1,1219 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap'); /* шрифт */
+
+html { /* плавность скролла сайта */
+    scroll-behavior: smooth 
+}
+
+
+/* ОБЩИЕ КЛАССЫ ____________________________________________________________________________________________________________________________________________________________________*/
+body { /* изначальный вид элементов */
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1a2a3a;
+    line-height: 1.6;
+}
+
+.section-header { /* общие настройки всех заголовков*/
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.section-title { /* заголовок */
+    font-size: 2.5rem;
+    color: #1a2a3a;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.section-subtitle { /* подзаголовок */
+    color: #718096;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+section { /* общие настройки секций */
+    position: relative;
+    padding: 120px 0 !important; /* Больше отступов = больше "дороговизны" */
+    overflow: hidden;
+}
+/*.section-divider { /* мини-блок линия между секциями */
+/*    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #0057b7, transparent);
+}*/
+h2 {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+    color: #1a2a3a; /* Глубокий темный цвет вместо чистого черного */
+    letter-spacing: -0.5px; /* Чуть плотнее буквы — выглядит по-дизайнерски */
+}
+
+/* Используем двойной селектор для веса, чтобы перебить старые стили (TG-кружок) */
+html body .floating-tg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 62px;
+    height: 62px;
+    background-color: #0088cc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 12px 30px rgba(0, 136, 204, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none; /* Убираем возможные рамки */
+    outline: none;
+}
+
+/* Настройка иконки внутри TG-кружка */
+html body .floating-tg svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    fill: white; /* Цвет самолетика */
+    margin-left: -5px;
+}
+
+/* Состояние при наведении на TG-кружок */
+html body .floating-tg:hover {
+    transform: scale(1.1) translateY(-6px);
+    background-color: #0077b5;
+    box-shadow: 0 15px 35px rgba(0, 136, 204, 0.5);
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem; /* Уменьшаем заголовок на смартфонах */
+    }
+    .content-wrapper {
+        flex-direction: column; /* Элементы в колонку */
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    .info-square {
+        min-height: 200px; /* Больше места для текста на узком экране */
+    }
+    
+}
+
+
+/* NAV CLASS ШАПКИ __________________________________________________________________________________________________________________________________________________________________*/
+.navbar { /* верхнее состояние */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Плавный переход */
+}
+
+.navbar.scrolled {/* шапка при скролле */
+    top: 15px; /* Отступ от верха */
+    width: 90%; /* Сужаем */
+    left: 5%; /* Центрируем по бокам */
+    height: 65px;
+    background: rgba(255, 255, 255, 0.7); /* Прозрачность */
+    backdrop-filter: blur(12px); /* Размытие фона */
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50px; /* Закругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* стили элементов внутри шапки */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+/* логотип (на 2 части) */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.logo-main {
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -1px;
+    color: #1a2a3a;
+}
+
+.logo-sub {
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #0057b7;
+    text-transform: uppercase;
+}
+
+/* стилизация ссылок */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* линия под ссылкой, изначальная позиция */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0057b7;
+    transition: width 0.3s ease;
+}
+/* изменение цвета при наведении */
+.nav-links a:hover {
+    color: #0057b7;
+}
+/* ширина линии после наведения */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* изменения для состояния (когда листаем вниз) */
+.navbar.scrolled .logo-main,
+.navbar.scrolled .logo-sub {
+    font-size: 1.3rem; /* изменение размера при скролле */
+}
+
+/* кнопка кружок TG */
+.nav-tg-btn:hover { background: #004494; transform: scale(1.05); }
+
+@media (max-width: 768px){
+header {
+    position: relative !important; /* Убираем fixed */
+    top: auto !important;
+    width: 100%;
+    background: transparent; /* Или #ffffff, если хочешь белый фон в начале */
+    box-shadow: none !important; /* Убираем тень */
+    padding: 20px 0; /* Даем нормальные отступы внутри */
+}
+
+/* Чтобы контент сайта не заезжал ПОД фиксированную шапку */
+body {
+    padding-top: 90px; /* Высота твоей шапки */
+}
+.navbar.scrolled {
+    top: -70px;
+}
+}
+
+/* начало сайта, картинка, текст Hero-блока (header) __________________________________________________________________________________________________________________________________________________________________*/
+.hero-block {
+    position: relative; /* наложение оверлея и контента */
+    width: 100%; /* ширина */
+    height: 100vh; /* 100% высоты видимой части экрана */
+    background-image: url('start.png'); /* картинка фона */
+    background-size: cover; /* растяжение картинки, чтобы закрыть все пространство */
+    background-position: center; /* центрирование картинки */
+    display: flex; /* свободное положение блоков */
+    align-items: center; /* Центрировать контент по вертикали */
+    justify-content: center; /* Центрировать контент по горизонтали */
+    color: white; /* Цвет текста на главном блоке */
+    text-align: center; /* расположение текста */
+}
+.btn-hero {
+    display: inline-block;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0057b7 0%, #004494 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(0, 87, 183, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект при наведении */
+.btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 87, 183, 0.4);
+    background: linear-gradient(135deg, #0066d6 0%, #0057b7 100%);
+}
+
+/* Эффект при нажатии */
+.btn-hero:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 87, 183, 0.2);
+}
+
+/* Легкий отблеск (стеклянный блик) при наведении */
+.btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: all 0.5s;
+}
+
+.btn-hero:hover::before {
+    left: 100%;
+}
+/* Темный слой-оверлей поверх картинки */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Полупрозрачный черный цвет */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+    z-index: 1; /* Оверлей НАД картинкой */
+}
+
+/* Контент главного экрана */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Контент НАД оверлеем */
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Очень крупный заголовок */
+    margin: 0 0 20px 0;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Стилизация кнопки специально для Hero */
+.hero-content .btn-blue {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 30px; /* Кнопка-пилюля */
+    text-transform: uppercase; /* Все заглавные */
+    letter-spacing: 1px; /* Отступы между буквами */
+}
+/* 1. Создаем саму анимацию */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Начинаем чуть ниже */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Приходим в норму */
+    }
+}
+
+/* 2. Применяем начальное состояние (скрываем элементы) */
+.hero-content h1, 
+.hero-content p, 
+.hero-content .btn-blue {
+    opacity: 0; /* Изначально невидимы */
+    animation: fadeInUp 0.8s ease-out forwards; /* forwards сохраняет финальное состояние */
+}
+
+.hero-content h1 { /* анимация взлета текста 1*/
+    animation-delay: 0.2s;
+}
+
+.hero-content p {/* анимация взлета текста 2*/
+    animation-delay: 0.5s;
+}
+
+.hero-content .btn-blue {/* анимация взлета текста 3*/
+    animation-delay: 0.8s;
+}
+
+/* секция почему мы? __________________________________________________________________________________________________________________________________________________________________*/
+.features-section {
+    padding: 80px 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    background: 
+        radial-gradient(at 0% 0%, rgba(0, 87, 183, 0.05) 0px, transparent 50%), 
+        radial-gradient(at 100% 0%, rgba(0, 136, 204, 0.05) 0px, transparent 50%),
+        radial-gradient(rgba(0, 87, 183, 0.1) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 40px 40px !important; /* Последнее — размер сетки */
+}
+
+.section-title { /* заголовок блока */
+    font-size: 2rem;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Сама карточка */
+.feature-card {
+    display: flex;           /* Включаем гибкий контейнер */
+    flex-direction: column;  /* Выстраиваем элементы в столбик */
+    align-items: center;     /* Центрируем всё (иконку, h3, p) по горизонтали */
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Плавный "пружинистый" эффект */
+    cursor: default;
+       opacity: 0;
+    transform: translateY(40px); /* Смещаем вниз */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Плавное выплывание */
+}
+.feature-card.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #0057b7;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.icon-box {
+    width: 60px;          /* Ширина в покое */
+    height: 60px;         /* Высота в покое */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Изначальный масштаб (1 — это 100%, то есть без изменений) */
+    transform: scale(2) rotate(0deg); 
+    
+    /* Обязательно добавляем transition здесь, чтобы возвращение 
+       в исходный размер тоже было плавным */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- АНИМАЦИЯ ПРИ НАВЕДЕНИИ --- */
+.feature-card:hover {
+    transform: translateY(-12px); /* Карточка всплывает вверх */
+    background: #fff;
+    border-color: #0057b7;
+    box-shadow: 0 20px 40px rgba(0, 87, 183, 0.1); /* Мягкая синеватая тень */
+}
+
+.feature-card:hover .icon-box {
+    transform: scale(3) rotate(5deg); /* Иконка немного увеличивается и поворачивается */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+/* ваш путь к результату __________________________________________________________________________________________________________________________________________________________*/
+.workflow-section {
+    padding: 100px 0;
+    background: #ffffff; /* Белый фон, чтобы отличить от серого блока преимуществ */
+}
+
+.process-wrapper {
+    display: flex;
+    justify-content:space-between;
+    position: relative;
+    margin-top: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+/* Линия-соединитель */
+.process-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    width: 0; /* Изначально ширина 0 */
+    height: 3px; /* Сделаем чуть толще для заметности */
+    background: linear-gradient(90deg, #0088cc, #0057b7);
+    z-index: 1;
+    transition: width 1.5s ease-in-out; /* Плавное выезжание */
+}
+.process-wrapper.active::before {
+    width: calc(100% - 100px); /* Выезжает на всю длину */
+}
+
+.process-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+}
+
+/* Кругляшок с номером */
+.step-badge {
+    width: 60px;
+    height: 60px;
+    background: #0088cc;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 auto 25px;
+    box-shadow: 0 0 0 8px #ffffff, 0 10px 20px rgba(0, 136, 204, 0.2);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateX(100px); /* Смещаем вправо */
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* "Пружинистый" эффект */
+}
+.process-step.active .step-badge {
+    opacity: 1;
+    transform: translateX(0); /* Возвращаем на место */
+}
+
+.process-step:hover .step-badge {
+    transform: scale(1.1);
+    background: #0057b7;
+}
+
+
+.step-content {
+    opacity: 0 !important;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+    /* Убираем transition-delay отсюда, перенесем его в активацию */
+}
+.process-step.active .step-content {
+    opacity: 1 !important;
+    transform: translateY(0);
+    transition-delay: 0.4s; /* Ждем кружок */
+}
+.step-content h4 {
+    font-size: 1.2rem;
+    color: #1a2a3a;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+.step-content p {
+    font-size: 0.9rem;
+    color: #718096;
+    line-height: 1.6;
+}
+
+
+/* Адаптивность для мобилок (превращаем в вертикальный список) */
+@media (max-width: 768px) {
+    .process-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px; /* Уменьшаем общий отступ секции */
+        gap: 50px;
+        position: relative;
+    }
+
+    /* 1. ЛИНИЯ: Сдвигаем максимально влево */
+    .process-wrapper::before {
+     display: none !important;
+    }
+
+    /* 2. ШАГ: Делаем его как строку (Кружок слева, Текст справа) */
+    .process-step {
+        display: flex;
+        flex-direction: row; /* Выстраиваем в ряд */
+        text-align: left;
+        align-items: flex-start; /* Текст начинается сверху от кружка */
+        gap: 20px; /* Расстояние между кружком и текстом */
+        padding: 0;
+        width: 100%;
+    }
+
+    /* 3. КРУЖОК: Уменьшаем размер */
+    .step-badge {
+        width: 40px;  /* Было 60px */
+        height: 40px; /* Было 60px */
+        font-size: 1.1rem;
+        flex-shrink: 0; /* Чтобы кружок не сплющивался */
+        margin: 0; 
+        box-shadow: 0 0 0 5px #ffffff, 0 5px 15px rgba(0, 136, 204, 0.2);
+        z-index: 2;
+    }
+
+    /* 4. ТЕКСТ: Сдвигаем вправо, чтобы не пересекался с линией */
+    .step-content {
+        padding-top: 5px; /* Выравниваем по центру кружка визуально */
+        max-width: 80%; /* Чтобы текст не уходил за край экрана */
+    }
+
+    .step-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .step-content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+}
+
+
+/* БЛОКИ УСЛУГ _________________________________________________________________________________________________________________________________________________________________________________*/
+/* 1. БАЗОВЫЕ НАСТРОЙКИ СЕКЦИЙ (Липкость и слои) */
+/* Контейнер секции */
+.full-width-block {
+    position: sticky;
+    top: 60px;
+    background: #ffffff;
+    padding: 20px 0 40px 0;
+    border-top: 1.5px solid #f0f0f0;
+    border-bottom: 1.5px solid #d1d5db;
+    /* Убираем лишние внешние отступы, чтобы блоки плотно прилегали */
+    margin-top: -1.5px; 
+    min-height: 200px;
+    z-index: 1;
+    padding-top: 0 !important;
+    /* Тень создаст эффект наслоения при скролле */
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Сетка: Кнопки слева, Текст справа */
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 350px 1fr; 
+    gap: 40px;
+    padding: 0 20px;
+    align-items: start;
+    position: relative;
+    z-index: 1; /* Ниже чем services-nav */
+}
+.services-nav.is-stuck {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-bottom: 1.5px solid #0057b7; /* Синяя полоска, когда заголовок в стопке */
+}
+.services-nav h2{
+    position: sticky;
+    background: #ffffff; /* Обязательно, чтобы перекрывать контент снизу */
+    z-index: 10;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0; /* Тонкая линия разделения в стопке */
+    margin-top: 0 !important;
+    padding-top: 30px; /* Минимальный зазор для эстетики, если нужно */
+    white-space: nowrap; /* ЗАПРЕТ ПЕРЕНОСА на новую строку */
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.section-1 { 
+    top: 90px; /* Первая под шапкой */
+    z-index: 1; 
+}
+.section-2 { 
+    top: 160px; /* Вторая липнет под заголовком первой (60+60) */
+    z-index: 2; 
+}
+.section-3 { 
+    top: 230px; /* Третья под второй (120+60) */
+    z-index: 3; 
+}
+.section-4 { 
+    top: 300px; 
+    z-index: 4; 
+}
+/* Список кнопок в столбик */
+.button-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Кнопки-ссылки */
+.nav-btn {
+    background: none;
+    border: none;
+    border-left: 2px solid #eee;
+    padding: 8px 20px;
+    text-align: left;
+    font-size: 1rem;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: #0057b7;
+    border-left-color: #0057b7;
+}
+.button-list, .services-display {
+    position: relative;
+    z-index: 1;
+}
+.nav-btn.active {
+    font-weight: 700;
+}
+
+/* Правая часть с текстом */
+.services-display, [id^="dynamic-text-"] {
+    padding-top: 35px; /* Выравниваем по уровню кнопок */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    will-change: opacity, transform;
+}
+
+#dynamic-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    transition: opacity 0.3s ease; /* Для плавной смены */
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr; /* На мобилке всё в один столбик */
+        gap: 30px;
+    }
+    .services-display { padding-top: 0; }
+}
+
+/* FAQ СЕКЦИЯ*/
+
+/* Липкость для FAQ, чтобы он встал под заголовок 4-й секции */
+.section-faq {
+    position: relative;
+    top: 0px; /* 210px (4-я секция) + 50px (высота заголовка) */
+    z-index: 100;
+    background: #ffffff; /* Легкий оттенок, чтобы отделить от услуг */
+    padding-bottom: 100px;
+    border-top: 1.5px solid #d1d5db;
+    padding-top: 0 !important;
+}
+.section-faq h2 {
+    margin: 0 !important;
+    padding: 20px 0;
+    white-space: nowrap;
+}
+.faq-subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Вопросы в две колонки */
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.faq-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border-left: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-left-color: #0057b7;
+    background: rgba(0, 87, 183, 0.02);
+}
+
+.faq-num {
+    font-family: 'serif';
+    font-style: italic;
+    font-weight: 700;
+    color: #0057b7;
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+.faq-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Адаптация под мобилки */
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* КАК МЫ РАБОТАЕМ ___________________________________________________________________________________________________________________________________________________________ */
+.workflow-section {
+    background: #ffffff;
+    padding: 80px 0;
+    position: relative;
+    z-index: 100; /* Чтобы этот блок перекрывал стопку при скролле вверх */
+}
+
+.workflow-header {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
+    padding: 30px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    border-color: #0057b7;
+}
+
+.step-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(0, 87, 183, 0.1);
+    margin-bottom: 15px;
+}
+
+.step-card h3 {
+    margin-bottom: 10px;
+    color: #0057b7;
+}
+/* collab ___________________________________________________________________________________________________________________________________________________________________*/
+/* --- Стили для Блока "География Сотрудничества" --- */
+
+.collaboration-banner {
+    width: 100%;
+    /* Мы зададим фиксированную высоту или 70% от высоты экрана, чтобы баннер был масштабным */
+    height: 70vh; 
+    min-height: 500px;
+    background-image: url('твой-файл.png'); /* Укажи точный путь к картинке */
+    background-size: cover; /* Картинка полностью закрывает блок */
+    background-position: center; /* Рукопожатие ровно посередине */
+    background-repeat: no-repeat;
+    
+    /* Сдвигаем баннер вниз, чтобы он был виден полностью */
+    position: relative; 
+    margin-top: 60px; /* Отступ от предыдущего блока (Услуги/Преимущества) */
+    
+    /* Добавляем границу сверху, которую мы обсуждали в самом начале (тонкая и полупрозрачная) */
+    border-top: 1px solid rgba(0, 0, 0, 0.08); 
+    
+    display: flex;
+    align-items: center; /* Текст по центру по вертикали */
+    justify-content: center; /* Текст по центру по горизонтали */
+    
+    /* Добавляем легкое свечение баннеру */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* Плавное появление всего баннера при скролле (если JS подключен, можно убрать animation) */
+    animation: fadeBannerIn 1.5s ease-out;
+}
+
+/* Эффект матового стекла поверх картинки, чтобы текст лучше читался */
+.collaboration-banner::before {
+    content: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* Легкая белизна */
+    backdrop-filter: blur(1px); /* Очень легкое размытие (опционально) */
+    z-index: 1; /* Чтобы текст был ПОВЕРХ этого слоя */
+}
+
+/* Контейнер для текста внутри баннера */
+.collaboration-content {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.7); /* Делаем фон текста прозрачнее */
+    backdrop-filter: blur(10px); /* Теперь размывается только кусочек под текстом */
+    padding: 30px 50px;
+    border-radius: 12px;
+    z-index: 2; /* Текст поверх всех эффектов */
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Тонкая рамка текста */
+}
+
+/* Заголовок внутри баннера */
+.collaboration-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Подзаголовок (капшн) */
+.collaboration-caption {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Анимация появления --- */
+@keyframes fadeBannerIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .collaboration-banner {
+        height: 50vh; /* Уменьшаем высоту на телефонах */
+        min-height: 350px;
+        background-position: left center; /* Сдвигаем, чтобы руки были видны */
+    }
+    
+    .collaboration-content {
+        padding: 20px 30px;
+        max-width: 85%;
+    }
+    
+    .collaboration-title {
+        font-size: 24px;
+    }
+    
+    .collaboration-caption {
+        font-size: 16px;
+    }
+}
+/* ПОДВАЛ ________________________________________________________________________________________________________________________________________________________________________*/
+footer {
+    position: relative;
+    z-index: 10;
+    background: white;
+    padding: 50px 0;
+}
+
+.site-footer {
+    background-color: #1a2a3a; /* Глубокий темный фон */
+    color: #ffffff;
+    padding: 70px 0 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* Колонки */
+    gap: 50px;
+    padding: 0 20px;
+}
+
+/* Логотип в футере */
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.footer-logo span {
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #0088cc;
+    margin-left: 5px;
+}
+
+.footer-description {
+    color: #a0aec0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Заголовки h3 */
+.site-footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Контактная информация */
+.contact-info p {
+    color: #a0aec0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+}
+
+.contact-info span {
+    font-size: 1.1rem;
+}
+
+/* Соцсети (уже настроенные нами ранее) */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Иконка внутри карточки */
+/* Контейнер для иконок */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Базовый стиль иконки */
+.icon-link {
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.icon-link svg {
+    width: 22px;
+    height: 22px;
+    fill: #ccc; /* Спокойный серый цвет иконок в покое */
+    transition: fill 0.3s ease;
+}
+
+/* Эффекты при наведении */
+.icon-link:hover {
+    transform: translateY(-5px); /* Прыжок вверх */
+    background-color: white; /* Фон становится белым */
+}
+
+
+
+/* WhatsApp цвет */
+.icon-link.wa:hover svg { fill: #25D366; }
+
+/* Telegram цвет */
+.icon-link.tg:hover svg { fill: #ffffff; }
+
+/* TikTok цвет */
+.icon-link.tt:hover svg { fill: #000000; }
+
+/* Тень для активной иконки */
+.icon-link:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-link {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-link svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+}
+
+.icon-link:hover {
+    transform: translateY(-5px);
+    background: #0088cc;
+}
+
+/* Нижняя панель */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+.legal-links {
+    margin-top: 10px;
+}
+
+.legal-links a {
+    color: #718096;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.legal-links a:hover {
+    color: #ffffff;
+}
+
+/* Стили модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: #333;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-content h2 { color: #1a2a3a; margin-bottom: 20px; }
+.modal-content p { line-height: 1.6; margin-bottom: 15px; font-size: 0.9rem; }
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .contact-info p {
+        justify-content: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

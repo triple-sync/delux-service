@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delux Pass — Консульские услуги в Германии</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar" id="main-nav">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-main">DELUX</span><span class="logo-sub">PASS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="javascript:void(0)" onclick="scrollToServices()">Услуги</a></li>
+            <li><a href="#workflow">Процесс</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero-block">
+    <div class="hero-overlay"></div> 
+    <div class="hero-content">
+        <h1>Консульские услуги</h1>
+        <p>Ваш надежный гид и помощник в вопросах документации. <br> Быстро, профессионально и без лишних визитов в Берлин.</p>
+        <button class="btn-blue" onclick="scrollToServices()">Перейти к услугам</button>
+    </div>
+</header>
+<div class="section-divider"></div>
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Почему выбирают нас?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-box">⚡</div>
+                <h3>Без очереди</h3>
+                <p>Забудьте о многочасовых ожиданиях. Мы берем на себя всю бюрократию и запись.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🛡️</div>
+                <h3>100% Легально</h3>
+                <p>Все документы проходят официальную проверку и соответствуют законодательству РФ и ФРГ.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🌍</div>
+                <h3>Дистанционно</h3>
+                <p>Подавайте заявки из любого города Германии, не тратя время на поездку в Берлин.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">💎</div>
+                <h3>Премиум сервис</h3>
+                <p>Персональный менеджер на связи до момента получения вами готового документа.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="workflow" class="workflow-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Ваш путь к результату</h2>
+            <p class="section-subtitle">Всего 4 простых этапа до получения документов</p>
+        </div>
+
+        <div class="process-wrapper">
+            <div class="process-step">
+                <div class="step-badge">1</div>
+                <div class="step-content">
+                    <h4>Консультация</h4>
+                    <p>Бесплатно анализируем ситуацию и присылаем список нужных справок.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">2</div>
+                <div class="step-content">
+                    <h4>Подготовка</h4>
+                    <p>Проверяем ваши сканы и заполняем анкеты по всем стандартам.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">3</div>
+                <div class="step-content">
+                    <h4>Оформление</h4>
+                    <p>Подаем документы. Вы отдыхаете, пока мы работаем с ведомствами.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">4</div>
+                <div class="step-content">
+                    <h4>Получение</h4>
+                    <p>Доставляем готовый документ курьером прямо вам в руки.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+
+    <section class="full-width-block section-1">
+        <div class="content-wrapper">
+            <div class="controls">
+                <h2>Паспорта и Учет</h2>
+                <div class="button-group">
+                    <button class="btn-blue" onclick="changeText('result-1', 'Оформление загранпаспортов на 5 и 10 лет, замена при порче или утере, детские паспорта.', this)">Загранпаспорт</button>
+                    <button class="btn-blue" onclick="changeText('result-1', 'Постановка на учет для получения справок и уведомлений удаленно.', this)">Консульский учет</button>
+                </div>
+            </div>
+
+            <div id="result-1" class="info-square">
+                <div class="glass-glow"></div> 
+                <div class="text-content">
+                    Выберите категорию, чтобы узнать подробности...
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="section-divider"></div>
+
+    <section class="full-width-block grey-bg section-2">
+        <div class="content-wrapper">
+            <div class="controls">
+                <h2>Документы и Нотариат</h2>
+                <div class="button-group">
+                    <button class="btn-blue" onclick="changeText('result-2', 'Генеральные доверенности, согласия на выезд, отказы от наследства.', this)">Доверенности</button>
+                    <button class="btn-blue" onclick="changeText('result-2', 'Профессиональный перевод документов присяжным переводчиком.', this)">Переводы</button>
+                </div>
+            </div>
+            <div id="result-2" class="info-square">
+                <div class="text-content">Выберите подкатегорию выше...</div>
+            </div>
+        </div>
+    </section>
+
+<div class="section-divider"></div>
+
+    <section class="full-width-block section-3">
+        <div class="content-wrapper">
+            <div class="controls">
+                <h2>Гражданство РФ</h2>
+                <div class="button-group">
+                    <button class="btn-blue" onclick="changeText('result-3', 'Оформление гражданства для детей по рождению или в упрощенном порядке.', this)">Детям</button>
+                    <button class="btn-blue" onclick="changeText('result-3', 'Проверка наличия гражданства РФ (если паспорт просрочен более чем на 5 лет).', this)">Проверка</button>
+                    <button class="btn-blue" onclick="changeText('result-3', 'Консультации по процедуре выхода из гражданства.', this)">Выход</button>
+                </div>
+            </div>
+            <div id="result-3" class="info-square">
+                <div class="text-content">Выберите нужный пункт...</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="full-width-block grey-bg section-4">
+        <div class="content-wrapper">
+            <div class="controls">
+                <h2>Пенсии и Капитал</h2>
+                <div class="button-group">
+                    <button class="btn-blue" onclick="changeText('result-4', 'Оформление справок о нахождении в живых для пенсионного фонда РФ.', this)">Пенсионные справки</button>
+                    <button class="btn-blue" onclick="changeText('result-4', 'Консультации по использованию материнского капитала за рубежом.', this)">Материнский капитал</button>
+                </div>
+            </div>
+            <div id="result-4" class="info-square">
+                <div class="text-content">Выберите категорию...</div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div class="section-divider"></div>
+
+
+<footer id="contact" class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <div class="footer-logo">DELUX<span>PASS</span></div>
+            <p class="footer-description">Премиальный сервис по оформлению документов для граждан РФ в Германии. Быстро, надежно, дистанционно.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Контакты</h3>
+            <div class="contact-info">
+                <p><span>📍</span> Oststraße 122, 22844 Norderstedt<br>
+                   <small style="margin-left: 28px; color: #718096;">Eingang C, 1. Stock</small>
+                </p>
+                <p><span>📧</span> deluxpass@mail.ru</p>
+                <p><span>📞</span> +49 172 249 27 57</p>
+                <p><span>🕒</span> Пн—Пт: 09:30 — 17:00</p>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Связь</h3>
+            <div class="social-icons">
+                <a href="https://wa.me/491722492757" class="icon-link wa" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                <a href="https://t.me/pass_deluxbot" class="icon-link tg" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.18l-1.89 8.91c-.14.64-.52.8-.1.44l-2.88-2.12-1.39 1.34c-.15.15-.28.28-.58.28l.21-2.94 5.35-4.84c.23-.21-.05-.32-.35-.12L9.26 13l-2.85-.89c-.62-.19-.63-.62.13-.92l11.13-4.3c.51-.19.96.11.89.29z"/></svg></a>
+                <a href="https://tiktok.com/@deluxpass" class="icon-link tt" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.81-.6-4.03-1.37-.01 2.61-.01 5.22-.01 7.83 0 1.25-.13 2.51-.55 3.7-1 2.91-3.9 4.79-6.88 4.86-1.55.05-3.13-.3-4.47-1.07-2.31-1.28-3.66-3.83-3.34-6.44.25-2.2 1.56-4.22 3.52-5.18.62-.31 1.29-.53 1.98-.65v4.1c-.51.13-1 .36-1.4.73-.83.71-1.11 1.94-.65 2.92.31.72 1.05 1.25 1.83 1.29 1.2.1 2.4-.64 2.77-1.78.14-.41.17-.85.17-1.28V0z"/></svg></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 DELUX PASS. Все права защищены.</p>
+        <div class="legal-links">
+            <a href="javascript:void(0)" onclick="openModal('impressum')">Impressum</a> | 
+            <a href="javascript:void(0)" onclick="openModal('privacy')">Datenschutz</a>
+        </div>
+    </div>
+
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalText"></div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/pass_deluxbot" class="floating-tg" target="_blank" aria-label="Написать в Telegram">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.1 2.92a1.32 1.32 0 0 0-1.4-.23L2.4 9.17c-.7.31-.76 1.34-.11 1.6l4.63 1.83a1.12 1.12 0 0 0 .97-.13l10.3-6.44c.1-.06.2.06.13.13l-8.34 7.6a1.12 1.12 0 0 0-.29 1l1.52 7.04c.16.73 1.14.88 1.5.23L16 19.34a1.12 1.12 0 0 1 1.25-.32l3.4 1.54a1.32 1.32 0 0 0 1.9-1.2l1.62-15.17a1.32 1.32 0 0 0-.46-1.12Z" fill="white"/>
+    </svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

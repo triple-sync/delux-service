@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delux Pass — Консульские услуги в Германии</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar" id="main-nav">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-main">DELUX</span><span class="logo-sub">PASS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="javascript:void(0)" onclick="goToSection('btn-1')">Услуги</a></li>
+            <li><a href="javascript:void(0)" onclick="goToSection('btn-work')">Процесс</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero-block">
+    <div class="hero-overlay"></div> 
+    <div class="hero-content">
+        <h1>Консульские услуги</h1>
+        <p>Ваш надежный гид и помощник в вопросах документации. <br> Быстро, профессионально и без лишних визитов в Берлин.</p>
+        <button class="btn-hero" onclick="goToSection('btn-1')">Перейти к услугам</button>
+    </div>
+</header>
+<div class="section-divider"></div>
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Ваша уверенность в результате</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-box">🤝</div>
+                <h3>Полная опека</h3>
+                <p>Мы не просто консультируем, а сопровождаем вас на каждом этапе. Личная встреча, помощь с логистикой и поддержка до момента получения документа.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-box">⚖️</div>
+                <h3>Юридическая чистота</h3>
+                <p>Работаем строго в правовом поле РФ и ФРГ. Все документы проходят официальную верификацию в консульских отделах.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-box">📍</div>
+                <h3>Вся Германия</h3>
+                <p>Дистанционная подготовка документов экономит ваше время. Подавайте заявку из любого города, минуя лишние поездки в Берлин.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box">⭐</div>
+                <h3>Человеческий подход</h3>
+                <p>Мы ценим каждого клиента: всегда остаемся на связи и при необходимости помогаем с трансфером до офиса пожилым людям.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="workflow-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Порядок взаимодействия</h2>
+            <p class="section-subtitle">Прозрачный процесс оформления от первичного анализа до выдачи</p>
+        </div>
+
+        <div class="process-wrapper">
+            <div class="process-step">
+                <div class="step-badge">1</div>
+                <div class="step-content">
+                    <h4>Аудит документов</h4>
+                    <p>Проводим бесплатный анализ вашей ситуации и формируем точный перечень необходимых данных</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">2</div>
+                <div class="step-content">
+                    <h4>Комплектация кейса</h4>
+                    <p>Проверяем файлы, заполняем официальные формы и готовим пакет документов по регламентам ведомств</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">3</div>
+                <div class="step-content">
+                    <h4>Представление интересов</h4>
+                    <p>Взаимодействуем с консульствами и госструктурами. Весь процесс подачи берем на себя</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-badge">4</div>
+                <div class="step-content">
+                    <h4>Выдача результата</h4>
+                    <p>Передаем готовый документ лично в руки или организуем безопасную курьерскую доставку</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider btn-1"></div>
+
+
+<section class="full-width-block section-1">
+    <div class="content-wrapper">
+        <div class="services-nav">
+            <h2>Заграничные паспорта</h2>
+            <div class="button-list">
+                <button class="nav-btn active" onclick="updateText('Оформление биометрических (10 лет) и обычных (5 лет) паспортов РФ. Полное сопровождение: от записи в консульство до проверки готовности. Помощь при порче, утере или окончании срока действия.', this, 'dynamic-text-1')">Паспорт РФ</button>
+                <button class="nav-btn" onclick="updateText('Консультации и подготовка пакета документов для граждан Республики Казахстан: замена паспорта, постановка на консульский учет и оформление утраты гражданства РК.', this, 'dynamic-text-1')">Паспорт РК</button>
+                <button class="nav-btn" onclick="updateText('Срочное оформление первого паспорта для новорожденных. Подготовка всех подтверждающих документов и перевод свидетельства о рождении (Geburtsurkunde).', this, 'dynamic-text-1')">Детский паспорт</button>
+            </div>
+        </div>
+        <div class="services-display">
+            <p id="dynamic-text-1">Оформление биометрических (10 лет) и обычных (5 лет) паспортов РФ. Полное сопровождение: от записи в консульство до проверки готовности. Помощь при порче, утере или окончании срока действия.</p>
+        </div>
+    </div>
+</section>
+
+<section class="full-width-block section-2">
+    <div class="content-wrapper">
+        <div class="services-nav">
+            <h2>Нотариат и Юруслуги</h2>
+            <div class="button-list">
+                <button class="nav-btn active" onclick="updateText('Составление генеральных доверенностей, согласий на выезд ребенка и отказов от наследства на русском языке по стандартам РФ и РК. Нотариальное заверение без очередей.', this, 'dynamic-text-2')">Доверенности</button>
+                <button class="nav-btn" onclick="updateText('Оформление штампа Апостиль на немецкие документы для их признания в РФ/РК. Легализация справок о браке, рождении и выписок из торгового реестра.', this, 'dynamic-text-2')">Апостиль</button>
+                <button class="nav-btn" onclick="updateText('Профессиональный перевод документов присяжным переводчиком (Beglaubigte Übersetzung). Подготовка справок для немецких ведомств (Standesamt, Burgeramt).', this, 'dynamic-text-2')">Переводы</button>
+            </div>
+        </div>
+        <div class="services-display">
+            <p id="dynamic-text-2">Составление генеральных доверенностей, согласий на выезд ребенка и отказов от наследства на русском языке по стандартам РФ и РК. Нотариальное заверение без очередей.</p>
+        </div>
+    </div>
+</section>
+
+<section class="full-width-block section-3">
+    <div class="content-wrapper">
+        <div class="services-nav">
+            <h2>Вопросы гражданства</h2>
+            <div class="button-list">
+                <button class="nav-btn active" onclick="updateText('Оформление гражданства РФ детям, рожденным в Германии. Подтверждение наличия гражданства, если внутренний или загранпаспорт просрочен более чем на 5 лет.', this, 'dynamic-text-3')">Детям / Проверка</button>
+                <button class="nav-btn" onclick="updateText('Полное сопровождение процедуры выхода из гражданства РФ для получения немецкого паспорта (Einbürgerung). Проверка отсутствия задолженностей и сбор справок.', this, 'dynamic-text-3')">Выход из гражданства</button>
+            </div>
+        </div>
+        <div class="services-display">
+            <p id="dynamic-text-3">Оформление гражданства РФ детям, рожденным в Германии. Подтверждение наличия гражданства, если внутренний или загранпаспорт просрочен более чем на 5 лет.</p>
+        </div>
+    </div>
+</section>
+
+<section class="full-width-block section-4">
+    <div class="content-wrapper">
+        <div class="services-nav">
+            <h2>Социальные вопросы</h2>
+            <div class="button-list">
+                <button class="nav-btn active" onclick="updateText('Ежегодное оформление справок о нахождении в живых (Lebensbescheinigung) для пенсионного фонда. Помощь в получении выплат без выезда из Германии.', this, 'dynamic-text-4')">Пенсия РФ</button>
+                <button class="nav-btn" onclick="updateText('Распоряжение материнским капиталом: получение сертификата и консультации по его использованию на улучшение жилищных условий или образование детей.', this, 'dynamic-text-4')">Маткапитал</button>
+                <button class="nav-btn" onclick="updateText('Постановка на консульский учет, получение справок о несудимости и выписок об отсутствии брака на территории РФ/РК удаленно.', this, 'dynamic-text-4')">Справки и Учет</button>
+            </div>
+        </div>
+        <div class="services-display">
+            <p id="dynamic-text-4">Ежегодное оформление справок о нахождении в живых (Lebensbescheinigung) для пенсионного фонда. Помощь в получении выплат без выезда из Германии.</p>
+        </div>
+    </div>
+</section>
+
+<section class="full-width-block section-faq">
+    <div class="content-wrapper">
+        <div class="services-nav">
+            <h2>Частые вопросы</h2>
+            <p class="faq-subtitle">Все ответы и поддержка доступны в нашем Telegram-боте</p>
+        </div>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <span class="faq-num">01</span>
+                <p>Как быстро оформляется загранпаспорт?</p>
+            </div>
+            <div class="faq-item">
+                <span class="faq-num">02</span>
+                <p>Нужно ли личное присутствие для доверенности?</p>
+            </div>
+            <div class="faq-item">
+                <span class="faq-num">03</span>
+                <p>Как проверить готовность моих документов?</p>
+            </div>
+            <div class="faq-item">
+                <span class="faq-num">04</span>
+                <p>Можно ли оплатить услуги картой иностранного банка?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="workflow-section btn-work">
+    <div class="content-wrapper">
+        <div class="workflow-header">
+            <h2>Процесс оформления</h2>
+            <p>Присоединяйтесь к нашему сообществу и получайте результат без посредников</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Связь со специалистом</h3>
+                <p>Позвоните нам или напишите в WhatsApp-группу (700+ участников). Мы ответим на все вопросы в реальном времени.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Анализ и проверка</h3>
+                <p>Проводим детальный разбор документов. Для самостоятельного изучения нюансов доступен наш FAQ-бот в Telegram.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>Официальная подача</h3>
+                <p>Координируем визиты в консульства и сопровождение. Работаем строго в рамках дипломатического протокола.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h3>Получение</h3>
+                <p>Вы получаете готовый документ на руки. Мы гарантируем конфиденциальность и точность данных.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="collaboration-banner">
+    <div class="container">
+        <h2 class="section-title">География взаимодействия</h2>
+        <div class="banner-wrapper">
+            <img src="partners.png" alt="Сотрудничество РФ и РК" class="collab-img">
+        </div>
+        <p class="banner-caption">
+            Официальное сопровождение и координация действий с консульскими отделами РФ и РК на территории Германии.
+        </p>
+    </div>
+</section> -->
+
+<footer id="contact" class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <div class="footer-logo">DELUX<span>PASS</span></div>
+            <p class="footer-description">Премиальный сервис по оформлению документов для граждан РФ, РК в Германии. Быстро, надежно, дистанционно.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Контакты</h3>
+            <div class="contact-info">
+                <p><span>📍</span> Oststraße 122, 22844 Norderstedt<br>
+                   <small style="margin-left: 28px; color: #718096;">Eingang C, 1. Stock</small>
+                </p>
+                <p><span>📧</span> deluxpass@mail.ru</p>
+                <p><span>📞</span> +49 172 249 27 57</p>
+                <p><span>🕒</span> Пн—Пт: 09:30 — 17:00</p>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Связь</h3>
+            <p class="footer-description"><span></span>Остались вопросы?<br> Присоединяйтесь к нашим соц. сетям, там можно получить живой ответ!</p>
+            <div class="social-icons">
+                <a href="https://wa.me/491722492757" class="icon-link wa" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                <a href="https://t.me/passdelux_bot" class="icon-link tg" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.18l-1.89 8.91c-.14.64-.52.8-.1.44l-2.88-2.12-1.39 1.34c-.15.15-.28.28-.58.28l.21-2.94 5.35-4.84c.23-.21-.05-.32-.35-.12L9.26 13l-2.85-.89c-.62-.19-.63-.62.13-.92l11.13-4.3c.51-.19.96.11.89.29z"/></svg></a>
+                <a href="https://tiktok.com/@deluxpass" class="icon-link tt" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.81-.6-4.03-1.37-.01 2.61-.01 5.22-.01 7.83 0 1.25-.13 2.51-.55 3.7-1 2.91-3.9 4.79-6.88 4.86-1.55.05-3.13-.3-4.47-1.07-2.31-1.28-3.66-3.83-3.34-6.44.25-2.2 1.56-4.22 3.52-5.18.62-.31 1.29-.53 1.98-.65v4.1c-.51.13-1 .36-1.4.73-.83.71-1.11 1.94-.65 2.92.31.72 1.05 1.25 1.83 1.29 1.2.1 2.4-.64 2.77-1.78.14-.41.17-.85.17-1.28V0z"/></svg></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 DELUX PASS. Все права защищены.</p>
+        <div class="legal-links">
+            <a href="javascript:void(0)" onclick="openModal('impressum')">Impressum</a> | 
+            <a href="javascript:void(0)" onclick="openModal('privacy')">Datenschutz</a>
+        </div>
+    </div>
+
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalText"></div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://t.me/passdelux_bot" class="floating-tg" target="_blank" aria-label="Написать в Telegram">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.1 2.92a1.32 1.32 0 0 0-1.4-.23L2.4 9.17c-.7.31-.76 1.34-.11 1.6l4.63 1.83a1.12 1.12 0 0 0 .97-.13l10.3-6.44c.1-.06.2.06.13.13l-8.34 7.6a1.12 1.12 0 0 0-.29 1l1.52 7.04c.16.73 1.14.88 1.5.23L16 19.34a1.12 1.12 0 0 1 1.25-.32l3.4 1.54a1.32 1.32 0 0 0 1.9-1.2l1.62-15.17a1.32 1.32 0 0 0-.46-1.12Z" fill="white"/>
+    </svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
