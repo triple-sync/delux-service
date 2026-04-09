@@ -255,7 +255,23 @@ function updateText(newText, btn, targetId) {
     btn.classList.add('active');
 }
 
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 
+    // Чистим URL от возможных решеток
+    if (history.replaceState) {
+        history.replaceState(null, null, window.location.pathname);
+    }
+    
+    // Если было открыто мобильное меню — закрываем его
+    const navLinks = document.getElementById('mobile-nav-links');
+    if (navLinks) {
+        navLinks.classList.remove('open');
+    }
+}
 function toggleMobileMenu() {
     const navLinks = document.getElementById('mobile-nav-links');
     navLinks.classList.toggle('open');
