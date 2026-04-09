@@ -134,7 +134,18 @@ function goToSection(sectionClass) {
         }
     }
 }
+function scrollToBottom() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
 
+    // Опционально: закрыть мобильное меню после клика
+    const navLinks = document.getElementById('mobile-nav-links');
+    if (navLinks) {
+        navLinks.classList.remove('open');
+    }
+}
 
 window.addEventListener('scroll', function() {
     const nav = document.getElementById('main-nav');
@@ -245,6 +256,20 @@ function updateText(newText, btn, targetId) {
 }
 
 
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('mobile-nav-links');
+    navLinks.classList.toggle('open');
+}
+
+// Закрываем меню при клике на пункт
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.getElementById('mobile-nav-links');
+        if (navLinks) navLinks.classList.remove('open');
+    });
+});
+
+
 
 processObserver.observe(document.querySelector('.workflow-section'));   
 
@@ -264,7 +289,7 @@ const legalData = {
         <p><strong>2. Cookies:</strong> Мы используем только необходимые технические файлы cookie для работы сайта.</p>
         <p><strong>3. Ваши права:</strong> Вы имеете право на получение информации о ваших сохраненных данных в любое время.</p>
     `
-};
+}
 
 function openModal(type) {
     document.getElementById('modalText').innerHTML = legalData[type];
