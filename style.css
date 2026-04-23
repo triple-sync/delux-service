@@ -45,7 +45,7 @@ section { /* общие настройки секций */
 }*/
 h2 {
     font-size: 2rem;
-    margin: 0 0 20px 0;
+    margin: 0px 0 20px 0px;
     color: #1a2a3a; /* Глубокий темный цвет вместо чистого черного */
     letter-spacing: -0.5px; /* Чуть плотнее буквы — выглядит по-дизайнерски */
 }
@@ -346,6 +346,7 @@ html body .floating-tg:hover {
     box-shadow: 0 4px 14px rgba(0, 87, 183, 0.3);
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 1.5s ease-out; 
 }
 
 /* Эффект при наведении */
@@ -420,6 +421,73 @@ html body .floating-tg:hover {
     text-transform: uppercase; /* Все заглавные */
     letter-spacing: 1px; /* Отступы между буквами */
 }
+/* встреча консула */
+.hero-status {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрируем под кнопкой */
+    margin-top: 50px;
+    gap: 10px;
+    animation: fadeInUp 1.5s ease-out; /* Плавное появление */
+}
+
+.status-text {
+    font-family: 'Inter', sans-serif; /* Или твой основной шрифт */
+    font-weight: 300; /* Делаем шрифт тоньше */
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8); /* Чуть приглушенный белый */
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Делает надпись строже и аккуратнее */
+}
+
+.status-date {
+    font-weight: 500; /* Дату выделяем чуть жирнее */
+    color: #ff4d4d; /* Твой фирменный красный */
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}
+
+/* Пульсирующая точка (эффект живой очереди/активности) */
+/* Основной стабильный кружочек */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    position: relative; /* Создаем контекст для позиционирования волны */
+    flex-shrink: 0;     /* Запрещаем кружочку сжиматься */
+}
+
+/* Пульсирующая волна */
+.status-dot::after {
+    content: '';
+    position: absolute;
+    /* Центрируем волну относительно родителя */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 100%;
+    height: 100%;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    z-index: -1; /* Волна под кружочком */
+    
+    /* Анимация (важно добавить заново, так как transform теперь занят центровкой) */
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3.5);
+        opacity: 0;
+    }
+}
+
+
 /* 1. Создаем саму анимацию */
 @keyframes fadeInUp {
     from {
@@ -789,6 +857,7 @@ html body .floating-tg:hover {
 /* Правая часть с текстом */
 .services-display, [id^="dynamic-text-"] {
     padding-top: 35px; /* Выравниваем по уровню кнопок */
+    padding-left: 20px;
     transition: opacity 0.2s ease-out, transform 0.2s ease-out;
     will-change: opacity, transform;
 }
@@ -805,7 +874,9 @@ html body .floating-tg:hover {
     .content-wrapper {
         grid-template-columns: 1fr; /* На мобилке всё в один столбик */
         gap: 30px;
+        padding-left: 0px;
     }
+    .services-display h2{ padding: 30px 20px 30px; }
     .services-display { padding-top: 0; }
 }
 
@@ -995,6 +1066,8 @@ html body .floating-tg:hover {
     max-width: 600px;
     margin: 0 auto;
 }
+
+
 
 /* --- Анимация появления --- */
 @keyframes fadeBannerIn {

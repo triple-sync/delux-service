@@ -228,6 +228,7 @@ window.addEventListener('scroll', () => {
 function updateText(newText, btn, targetId) {
     const display = document.getElementById(targetId);
     
+    // 1. Анимация смены текста
     if (display) {
         display.style.opacity = 0;
         setTimeout(() => {
@@ -236,23 +237,12 @@ function updateText(newText, btn, targetId) {
         }, 200);
     }
 
-    // Переключаем активную кнопку только в текущем списке
+    // 2. Переключаем активную кнопку ТОЛЬКО в текущем списке
     const parent = btn.closest('.button-list');
     if (parent) {
         parent.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     }
-    setTimeout(() => {
-        textElement.innerText = newText;
-        // Плавное появление
-        textElement.style.opacity = 1;
-    }, 300);
-
-    // Смена активной кнопки
-    document.querySelectorAll('.nav-btn').forEach(button => {
-        button.classList.remove('active');
-    });
-    btn.classList.add('active');
 }
 
 function scrollToTop() {
