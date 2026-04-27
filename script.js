@@ -216,7 +216,7 @@ window.addEventListener('scroll', () => {
 
             if (info) {
                 info.style.opacity = 1 - progress;
-                info.style.transform = `translateY(${rect.top * 0.2}px)`; // Легкий параллакс
+                info.style.transform = `translateY(${rect.top * 0.1}px)`; // Легкий параллакс
             }
         } else if (info) {
             info.style.opacity = 1;
@@ -311,3 +311,8 @@ function closeModal() {
 window.onclick = function(event) {
     if (event.target == document.getElementById('legalModal')) closeModal();
 };
+
+function toggleFaq(element) {
+    const item = element.parentElement;
+    item.classList.toggle('active');
+}

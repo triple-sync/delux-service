@@ -7,7 +7,7 @@ html { /* плавность скролла сайта */
 
 /* ОБЩИЕ КЛАССЫ ____________________________________________________________________________________________________________________________________________________________________*/
 body { /* изначальный вид элементов */
-    margin: 0;
+    margin: 0px;
     padding: 0;
     font-family: 'Inter', sans-serif;
     background-color: #ffffff;
@@ -18,7 +18,7 @@ body { /* изначальный вид элементов */
 .section-header { /* общие настройки всех заголовков*/
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 50px;
+    margin: 0 auto 40px;
 }
 
 .section-title { /* заголовок */
@@ -31,11 +31,14 @@ body { /* изначальный вид элементов */
 .section-subtitle { /* подзаголовок */
     color: #718096;
     font-size: 1.1rem;
-    margin-top: 10px;
+    margin-top: 0px;
+}
+.section-header h2{ /* общие настройки всех заголовков*/
+    margin: 0 auto 10px;
 }
 section { /* общие настройки секций */
     position: relative;
-    padding: 120px 0 !important; /* Больше отступов = больше "дороговизны" */
+    padding: 100px 0 !important; /* Больше отступов = больше "дороговизны" */
     overflow: hidden;
 }
 /*.section-divider { /* мини-блок линия между секциями */
@@ -137,13 +140,14 @@ html body .floating-tg:hover {
 
 /* стили элементов внутри шапки */
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1800px; /* Максимальная ширина контента */
+    margin: 0 auto;    /* Центрируем весь контейнер на странице */
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
+    justify-content: space-between; /* РАСКИДЫВАЕТ лого и кнопки по краям */
+    align-items: center;            /* Выравнивает их по вертикали по центру */
+    padding: 0 30px;                /* Внутренние отступы, чтобы не липли к краям экрана */
+    box-sizing: border-box;         /* Чтобы padding не увеличивал ширину блока */
 }
 /* логотип (на 2 части) */
 .logo {
@@ -151,6 +155,7 @@ html body .floating-tg:hover {
     align-items: center;
     gap: 4px;
     cursor: pointer;
+
 }
 
 .logo-main {
@@ -183,6 +188,7 @@ html body .floating-tg:hover {
     position: relative;
     padding: 5px 0;
     transition: color 0.3s ease;
+    margin-right: 0px;
 }
 
 /* линия под ссылкой, изначальная позиция */
@@ -273,34 +279,82 @@ html body .floating-tg:hover {
         display: flex !important;
         flex-direction: column !important;
         position: absolute;
-        top: 70px; /* Сразу под шапкой */
-        left: 0;
-        width: 100%;
-        background: #ffffff;
+        top: 75px; 
+        right: 15px;      /* Отступ от правого края экрана */
+        width: 250px;     /* Ширина окна теперь по размеру кнопок */
+        
+        /* Эффект прозрачности и блюра */
+        background: rgba(255, 255, 255, 0.85); /* Полупрозрачный белый */
+        backdrop-filter: blur(10px);           /* Тот самый эффект размытия */
+        -webkit-backdrop-filter: blur(10px);    /* Поддержка для Safari */
+        gap: 0px;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
+        opacity: 0;
+        transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
         list-style: none;
         padding: 0;
         margin: 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        /* Оформление краев */
+        border-radius: 18px; /* Скругляем все углы, чтобы окно смотрелось мягче */
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Тонкая светлая рамка */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Более выраженная тень */
+        border-bottom: 2px solid transparent; /* Изначально граница прозрачная */
     }
 
     .nav-links.open {
-        max-height: 300px;
-        border-bottom: 2px solid #0057b7;
+        max-height: 350px; 
+        padding: 10px 0; /* Внутренние отступы сверху и снизу */
+        opacity: 1;           /* Проявляем */
+        visibility: visible;  /* Делаем видимым */
     }
+
+    .nav-links li {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    /* Когда меню открыто, пункты плавно "выплывают" */
+    .nav-links.open li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Задержка появления для каждого пункта, чтобы они шли по очереди */
+    .nav-links.open li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.open li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.open li:nth-child(3) { transition-delay: 0.3s; }
 
     .nav-links li a {
-        display: block;
-        padding: 15px 20px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Текст слева, стрелка справа */
+        padding: 16px 20px !important;
         color: #1a2a3a !important;
-        font-weight: 600;
+        font-weight: 500;
         text-decoration: none;
-        border-top: 1px solid #f5f5f5;
+        transition: all 0.2s ease;
     }
-
+    .logo:active, 
+    .menu-toggle:active {
+        opacity: 0.3; /* Логотип или бургер станут чуть прозрачнее при тапе */
+        transition: opacity 0.01s ease;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        margin-left: 0px ;
+    }
+        a, 
+    button, 
+    .menu-toggle, 
+    .logo {
+        -webkit-tap-highlight-color: transparent;
+    }
     /* Отключаем все эффекты скролла для мобилок */
     .navbar.scrolled {
         width: 100% !important;
@@ -395,21 +449,22 @@ html body .floating-tg:hover {
 .hero-content {
     position: relative;
     z-index: 2; /* Контент НАД оверлеем */
-    max-width: 800px;
+    max-width: 1000px;
     padding: 20px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem; /* Очень крупный заголовок */
-    margin: 0 0 20px 0;
+    font-size: 5rem; /* Очень крупный заголовок */
+    margin: 0 0 0px 0;
     font-weight: 800;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
 }
 
 .hero-content p {
     font-size: 1.4rem;
-    line-height: 1.6;
+    line-height: 1.3;
     margin-bottom: 30px;
+    margin-top: 0px;
     color: rgba(255,255,255,0.9);
 }
 
@@ -426,9 +481,11 @@ html body .floating-tg:hover {
     display: flex;
     align-items: center;
     justify-content: center; /* Центрируем под кнопкой */
-    margin-top: 50px;
+    margin-top: 30px;
     gap: 10px;
-    animation: fadeInUp 1.5s ease-out; /* Плавное появление */
+    animation-delay: 1.8s;
+    opacity: 0; /* Изначально невидимы */
+    animation: fadeInUp 1.5s ease-out forwards; /* forwards сохраняет финальное состояние */
 }
 
 .status-text {
@@ -441,7 +498,7 @@ html body .floating-tg:hover {
 }
 
 .status-date {
-    font-weight: 500; /* Дату выделяем чуть жирнее */
+    font-weight: 600; /* Дату выделяем чуть жирнее */
     color: #ff4d4d; /* Твой фирменный красный */
     text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
 }
@@ -509,16 +566,25 @@ html body .floating-tg:hover {
 }
 
 .hero-content h1 { /* анимация взлета текста 1*/
-    animation-delay: 0.2s;
+    animation-delay: 0.25s;
 }
 
 .hero-content p {/* анимация взлета текста 2*/
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
 }
 
 .hero-content .btn-blue {/* анимация взлета текста 3*/
-    animation-delay: 0.8s;
+    animation-delay: 0.25s;
 }
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem; /* Очень крупный заголовок */
+        margin: 0 0 0px 0;
+        font-weight: 800;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
+    }
+}
+
 
 /* секция почему мы? __________________________________________________________________________________________________________________________________________________________________*/
 .features-section {
@@ -570,12 +636,13 @@ html body .floating-tg:hover {
     font-size: 1.3rem;
     margin-bottom: 15px;
     color: #0057b7;
+    line-height: 1.35;
 }
 
 .feature-card p {
     font-size: 0.95rem;
     color: #666;
-    line-height: 1.6;
+    line-height: 1.35;
 }
 
 .icon-box {
@@ -692,13 +759,13 @@ html body .floating-tg:hover {
 .step-content h4 {
     font-size: 1.2rem;
     color: #1a2a3a;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     font-weight: 700;
 }
 .step-content p {
     font-size: 0.9rem;
     color: #718096;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 
@@ -877,17 +944,20 @@ html body .floating-tg:hover {
         padding-left: 0px;
     }
     .services-display h2{ padding: 30px 20px 30px; }
-    .services-display { padding-top: 0; }
+    .services-display { padding-top: 0; margin-left: -14px;}
+    .services-nav {margin-left: 7px;}
+    .content-wrapper{margin-left: 20px;}
 }
 
 /* FAQ СЕКЦИЯ*/
 
 /* Липкость для FAQ, чтобы он встал под заголовок 4-й секции */
+/*
 .section-faq {
     position: relative;
-    top: 0px; /* 210px (4-я секция) + 50px (высота заголовка) */
+    top: 0px; 
     z-index: 100;
-    background: #ffffff; /* Легкий оттенок, чтобы отделить от услуг */
+    background: #ffffff; 
     padding-bottom: 100px;
     border-top: 1.5px solid #d1d5db;
     padding-top: 0 !important;
@@ -906,7 +976,7 @@ html body .floating-tg:hover {
 
 .faq-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Вопросы в две колонки */
+    grid-template-columns: 1fr 1fr; 
     gap: 30px;
     padding-top: 20px;
 }
@@ -939,6 +1009,160 @@ html body .floating-tg:hover {
     font-size: 1rem;
     color: #333;
     font-weight: 500;
+}
+
+*/
+/* Сохраняем логику "стопки" */
+.section-faq {
+    position: relative;
+    top: 0px; 
+    z-index: 5;
+    background: #ffffff; /* Должен быть белый фон */
+    padding-top: 100px; /* Задаем явный отступ от шапки */
+    padding-bottom: 120px;
+    border-top: 1.5px solid #d1d5db;
+}
+
+/* 2. Настройка заголовка и подзаголовка */
+.section-faq h2 {
+    margin: 0 !important;
+    padding: 0 0 10px 0;
+    white-space: nowrap;
+    font-size: 2.2rem; /* Сделаем чуть покрупнее */
+}
+
+.faq-subtitle {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 50px; /* Отступ до начала вопросов */
+    line-height: 1.5;
+    max-width: 600px; /* Ограничим ширину подзаголовка */
+}
+.faq-header-content h2{
+    margin: 0px 0px 0px;
+    padding-bottom: 0px;
+}
+.faq-header-content p{
+    margin: 0px 0px 20px;
+}
+/* 3. Контейнер для аккордеона */
+.faq-accordion-container {
+    max-width: 900px; /* Ограничиваем общую ширину для удобства чтения */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Отступ между плашками */
+}
+
+/* 4. Стили самой шторки ( faq-item ) */
+.faq-item {
+    background: #f1f1f1; /* Светло-серый фон плашки как на фото */
+    border-radius: 20px; /* Сильное скругление */
+    overflow: hidden; /* Важно для скрытия контента */
+    transition: all 0.3s ease;
+}
+
+/* 5. Вопрос (заголовок шторки) */
+.faq-question {
+    padding: 25px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question span {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1a2a3a;
+}
+
+/* 6. Иконка стрелочки */
+.faq-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Контейнер для иконки (кружок) */
+.faq-icon-circle {
+    width: 34px;
+    height: 34px;
+    background: #d1d5db; 
+    border-radius: 50%;
+    display: flex;       /* Центрируем SVG внутри */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Сама SVG иконка */
+.faq-arrow-svg {
+    width: 20px;
+    height: 20px;
+    color: #7d848e; /* Цвет стрелки по умолчанию */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Изменяем жирность стрелки напрямую в path (если нужно еще жирнее) */
+.faq-arrow-svg path {
+    stroke-width: 3; /* Поставьте 3 или 3.5 для максимальной жирности */
+}
+
+/* Стили для активного (открытого) состояния */
+.faq-item.active .faq-icon-circle {
+    background: #0057b7; /* Синий фон кружка */
+}
+
+.faq-item.active .faq-arrow-svg {
+    color: #ffffff;      /* Белая стрелка */
+    transform: rotate(90deg); /* Поворот вниз */
+}
+
+/* 7. Плавная механика шторки */
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr; /* Изначально закрыто */
+    transition: grid-template-rows 0.4s ease;
+}
+
+.answer-content {
+    overflow: hidden;
+    padding: 0 35px; /* Отступ слева как у вопроса */
+    opacity: 0; /* Изначально текст скрыт */
+    transition: opacity 0.3s ease, padding 0.3s ease;
+    color: #555;
+    line-height: 1.6;
+}
+
+/*********************************
+ * АКЦЕНТЫ ПРИ ОТКРЫТИИ (active) *
+ *********************************/
+
+.faq-item.active {
+    background: #ffffff; /* Белый фон при открытии */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Легкая тень */
+}
+
+/* Шторка плавно раскрывается */
+.faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+/* Текст плавно появляется */
+.faq-item.active .answer-content {
+    opacity: 1;
+    padding-bottom: 30px; /* Нижний отступ текста */
+}
+
+/* Иконка меняет цвет и поворачивается вниз */
+.faq-item.active .faq-icon-circle {
+    background: #0057b7; /* Синий круг */
+
+}
+
+.faq-item.active .faq-icon-circle::after {
+    color: #ffffff; /* Белая стрелка */
 }
 
 /* Адаптация под мобилки */
@@ -988,7 +1212,45 @@ html body .floating-tg:hover {
 
 .step-card h3 {
     margin-bottom: 10px;
-    color: #0057b7;
+    color: #0059b8;
+    font-size: 18px;
+}
+.whatsapp-btn {
+    /* Базовые стили */
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 25px;
+    gap: 10px;
+    /* Оформление */
+    border: 2.5px solid #999ea3; /* Цвет рамки как на фото */
+    border-radius: 30px;       /* Максимальное скругление */
+    background-color: white;   /* Фон кнопки */
+    
+    /* Текст */
+    color: #333;               /* Темно-серый текст */
+    text-decoration: none;     /* Убираем подчеркивание ссылки */
+    font-family: Inter;   /* Или ваш шрифт Inter */
+    font-size: 14px;
+    transition: all 0.3s ease; /* Плавность при наведении */
+}
+
+.arrow-icon {
+    width: 18px;      /* Размер иконки */
+    height: 18px;
+    fill: none;       /* Убираем внутреннюю заливку */
+    stroke: currentColor; /* Цвет линии такой же, как у текста кнопки */
+    
+    /* ВОТ ЗДЕСЬ МЫ ДЕЛАЕМ ЕЕ ЖИРНЕЕ */
+    stroke-width: 3;  /* Попробуйте 2, 3 или 4, чтобы найти нужную толщину */
+    
+    stroke-linecap: round;   /* Скругляем концы линий */
+    stroke-linejoin: round;  /* Скругляем углы */
+}
+
+/* Эффект при наведении */
+.whatsapp-btn:hover {
+    background-color: #ffffff;
+    border-color: #035fb4;
 }
 /* collab ___________________________________________________________________________________________________________________________________________________________________*/
 /* --- Стили для Блока "География Сотрудничества" --- */
@@ -1102,6 +1364,15 @@ html body .floating-tg:hover {
         font-size: 16px;
     }
 }
+
+
+/*.collab-img{
+    display: block;    
+    margin-left: auto;  
+    margin-right: auto; 
+    max-width: 100%;    
+    height: auto;
+}*/
 /* ПОДВАЛ ________________________________________________________________________________________________________________________________________________________________________*/
 footer {
     position: relative;
@@ -1247,6 +1518,10 @@ footer {
     background: #0088cc;
 }
 
+.footer-column {
+    width: 385px;
+    height: 268px;
+}
 /* Нижняя панель */
 .footer-bottom {
     margin-top: 60px;
@@ -1278,9 +1553,9 @@ footer {
 
 /* Стили модального окна */
 .modal {
+    z-index: 5;
     display: none;
     position: fixed;
-    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
