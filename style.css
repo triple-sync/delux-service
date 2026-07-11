@@ -584,9 +584,130 @@ html body .floating-tg:hover {
         text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
     }
 }
+/* секция статистики __________________________________________________________________________________________________________________________________________________________________*/
+/* --- БЛОК СТАТИСТИКИ --- */
+.stats-section {
+    padding-bottom: 10px; 
+    background-color: #ffffff; 
+}
 
+.stats-container {
+    max-width: 1140px; /* Стандартная ширина контентной зоны для баланса */
+    margin: auto;
+    display: grid;
+    /* Левая колонка шире (как в блоке паспортов), чтобы заголовок не зажимался */
+    grid-template-columns: 340px 1fr; 
+    gap: 100px;
+    padding: 0 24px;
+    align-items: start;
+}
 
-/* секция почему мы? __________________________________________________________________________________________________________________________________________________________________*/
+/* --- ЛЕВАЯ ЧАСТЬ: ЗАГОЛОВОК --- */
+.stats-header h2 {
+    margin-top: 120px;
+    font-family: 'Inter', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.25;
+    letter-spacing: -0.5px; /* Чуть собраннее для массивного заголовка */
+}
+
+.stats-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #8a94a6; /* Чуть мягче серый */
+    margin-top: 20px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+/* --- ПРАВАЯ ЧАСТЬ: СЕТКА С ЦИФРАМИ --- */
+.stats-grid {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px 60px; /* Больше свободного пространства между карточками */
+}
+
+/* Элемент статистики */
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Увеличили отступ от текста до шкалы, чтобы убрать «зажатость» */
+}
+
+/* Контейнер текста и цифры */
+.stat-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Выравнивание по нижней линии шрифта */
+    gap: 20px;
+}
+
+/* Подписи к цифрам (Шрифты и трекинг) */
+.stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px; /* Чуть меньше размер, но аккуратнее */
+    color: #4a5568; 
+    line-height: 1.5;
+    letter-spacing: 0.2px; /* Легкий отступ между буквами для читаемости */
+}
+
+/* Цифры */
+.stat-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 28px; /* Сделали чуть крупнее для акцента */
+    color: #0057b7; 
+    line-height: 1;  /* Убираем лишние невидимые отступы у цифр */
+    white-space: nowrap;
+}
+
+/* --- ИЗЯЩНЫЕ ШКАЛЫ --- */
+.progress-bar {
+    width: 100%;
+    height: 2px; /* Тонкая, ювелирная линия вместо 4px. Выглядит в разы дороже */
+    background-color: #eeeeee; /* Чистая аккуратная подложка трека */
+    border-radius: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-line {
+    height: 100%;
+    background: linear-gradient(to right, #0057b7 0%, #ff6b6b 100%);
+    border-radius: 1px;
+    
+    width: 0; 
+    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1); /* Плавный инерционный вылет */
+}
+
+.stats-section.animated .progress-line {
+    width: var(--progress-width);
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 992px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .stats-header h2 {
+        font-size: 28px;
+    }
+}
+/* секция почему мы? (deleted)__________________________________________________________________________________________________________________________________________________________________*/
 .features-section {
     padding: 80px 0;
     text-align: center;
@@ -836,7 +957,7 @@ html body .floating-tg:hover {
     border-bottom: 1.5px solid #d1d5db;
     /* Убираем лишние внешние отступы, чтобы блоки плотно прилегали */
     margin-top: -1.5px; 
-    min-height: 200px;
+    min-height: 400px;
     z-index: 1;
     padding-top: 0 !important;
     /* Тень создаст эффект наслоения при скролле */

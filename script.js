@@ -316,3 +316,21 @@ function toggleFaq(element) {
     const item = element.parentElement;
     item.classList.toggle('active');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const statsSection = document.querySelector('.stats-section');
+    
+    if (!statsSection) return;
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Если блок показался на экране хотя бы на 20%
+            if (entry.isIntersecting) {
+                statsSection.classList.add('animated');
+                statsObserver.unobserve(entry.target); // Отключаем слежку, чтобы анимация была один раз
+            }
+        });
+    }, { threshold: 0.2 });
+
+    statsObserver.observe(statsSection);
+});
