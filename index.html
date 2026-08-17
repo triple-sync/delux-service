@@ -36,60 +36,113 @@
         <button class="btn-hero" onclick="goToSection('btn-1')">Перейти к услугам</button>
             <div class="hero-status">
         <span class="status-dot"></span>
-        <span class="status-text">Ближайшая встреча с консульством РФ: <span class="status-date">21 мая 2026</span></span>
+        <span class="status-text">Ближайшая встреча с консульством РФ: <span class="status-date">30 сентября 2026</span></span>
     </div>
     </div>
 
 </header>
 <div class="section-divider"></div>
 <section class="stats-section">
-    <div class=" stats-container">
+    <div class="stats-container">
         
         <div class="stats-header">
             <h2>Наша деятельность в цифрах</h2>
-            <p class="stats-subtitle">У моей девушки сдохла собачка, и, чтобы взбодрить ее, я нашел и принес ей точно такую же. Она расплакалась и спросила меня: «Зачем мне две дохлые собачки?»</p>
+            <p class="stats-subtitle">Многолетний опыт и тысячи успешно решенных задач</p>
         </div>
 
         <div class="stats-grid">
             
-            <div class="stat-item">
-                <div class="stat-info">
+            <!-- Карточка 1: Клиенты -->
+            <div class="stat-card stat-card-clients">
+                <div class="stat-overlay"></div>
+                <div class="stat-content">
+                    <span class="stat-number" data-target="5400">0</span>
                     <span class="stat-label">Успешно обслужено клиентов</span>
-                    <span class="stat-number">5,400+</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-line" style="--progress-width: 92%;"></div>
-                </div>
+                <svg class="stat-icon-clients" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Главный силуэт -->
+                    <path d="M32 28C36.4183 28 40 24.4183 40 20C40 15.5817 36.4183 12 32 12C27.5817 12 24 15.5817 24 20C24 24.4183 27.5817 28 32 28Z" fill="#0057b7"/>
+                    <path d="M32 32C23.1634 32 16 37.8 16 45V48H48V45C48 37.8 40.8366 32 32 32Z" fill="#0057b7"/>
+                    <!-- Боковые силуэты без прозрачности -->
+                    <path d="M16 25C19.3137 25 22 22.3137 22 19C22 15.6863 19.3137 13 16 13C12.6863 13 10 15.6863 10 19C10 22.3137 12.6863 25 16 25Z" fill="#2b6cb0"/>
+                    <path d="M16 29C11.5 29 6 32 6 37V41H14V37C14 33.8 15.5 30.8 16 29Z" fill="#2b6cb0"/>
+                    <path d="M48 25C51.3137 25 54 22.3137 54 19C54 15.6863 51.3137 13 48 13C44.6863 13 42 15.6863 42 19C42 22.3137 44.6863 25 48 25Z" fill="#2b6cb0"/>
+                    <path d="M48 29C48.5 30.8 50 33.8 50 37V41H58V37C58 32 52.5 29 48 29Z" fill="#2b6cb0"/>
+                </svg>
             </div>
 
-            <div class="stat-item">
-                <div class="stat-info">
+            <!-- Карточка 2: Паспорта -->
+            <div class="stat-card stat-card-passport">
+                <div class="stat-overlay"></div>
+                <div class="stat-content">
+                    <span class="stat-number" data-target="3850">0</span>
                     <span class="stat-label">Оформлено заграничных паспортов</span>
-                    <span class="stat-number">3,850+</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-line" style="--progress-width: 85%;"></div>
-                </div>
+                <svg class="stat-icon-passport" viewBox="0 0 60 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="56" height="72" rx="6" fill="#8B1E2D"/>
+                    <line x1="8" y1="2" x2="8" y2="74" stroke="#5A101B" stroke-width="2"/>
+                    <!-- Золотой герб и детали насыщенного цвета -->
+                    <circle cx="32" cy="34" r="11" stroke="#FFD700" stroke-width="2"/>
+                    <path d="M32 26L34.5 31H39.5L35.5 34L37 39L32 36L27 39L28.5 34L24.5 31H29.5L32 26Z" fill="#FFD700"/>
+                    <rect x="18" y="52" width="28" height="3" rx="1.5" fill="#FFD700"/>
+                    <rect x="22" y="58" width="20" height="2.5" rx="1" fill="#FFD700"/>
+                    <rect x="27" y="64" width="10" height="6" rx="1" stroke="#FFD700" stroke-width="1.5"/>
+                    <circle cx="32" cy="67" r="1.5" fill="#FFD700"/>
+                </svg>
             </div>
 
-            <div class="stat-item">
-                <div class="stat-info">
+            <!-- Карточка 3: Съезды -->
+            <div class="stat-card stat-card-flags">
+                <div class="stat-overlay"></div>
+                <div class="stat-content">
+                    <span class="stat-number" data-target="24">0</span>
                     <span class="stat-label">Организовано консульских съездов</span>
-                    <span class="stat-number">120+</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-line" style="--progress-width: 78%;"></div>
-                </div>
+                <svg class="stat-icon-flags" viewBox="0 0 72 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="36" cy="58" rx="14" ry="3" fill="#4A5568"/>
+                    <path d="M34 52H38V57H34V52Z" fill="#2D3748"/>
+
+                    <!-- Левый флагшток (Россия) -->
+                    <line x1="35" y1="53" x2="12" y2="12" stroke="#4A5568" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="11" cy="10" r="3" fill="#FFD700"/>
+
+                    <g transform="rotate(-15 12 12)">
+                        <rect x="12" y="12" width="26" height="6" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="0.5" rx="0.5"/>
+                        <rect x="12" y="18" width="26" height="6" fill="#0057B7"/>
+                        <rect x="12" y="24" width="26" height="6" fill="#E53E3E" rx="0.5"/>
+                    </g>
+
+                    <!-- Правый флагшток (Германия) -->
+                    <line x1="37" y1="53" x2="60" y2="12" stroke="#4A5568" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="61" cy="10" r="3" fill="#FFD700"/>
+
+                    <g transform="rotate(15 60 12)">
+                        <rect x="34" y="12" width="26" height="6" fill="#000000" rx="0.5"/>
+                        <rect x="34" y="18" width="26" height="6" fill="#DD6B20"/>
+                        <rect x="34" y="24" width="26" height="6" fill="#FFD700" rx="0.5"/>
+                    </g>
+                </svg>
             </div>
 
-            <div class="stat-item">
-                <div class="stat-info">
-                    <span class="stat-label">Решено сложных и экстренных случаев</span>
-                    <span class="stat-number">99.4%</span>
+            <!-- Карточка 4: Опыт -->
+            <div class="stat-card stat-card-hamburg">
+                <div class="stat-overlay"></div>
+                <div class="stat-content">
+                    <span class="stat-number" data-target="8" data-postfix=" лет">0</span>
+                    <span class="stat-label">Опыт предоставления услуг в Гамбурге</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-line" style="--progress-width: 99.4%;"></div>
-                </div>
+                    <svg class="stat-icon-hamburg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="28" stroke="#0057B7" stroke-width="2.5"/>
+                        
+                        <!-- Ворота Гамбурга -->
+                        <path d="M20 44V34H24V44H20ZM28 44V30H36V44H28ZM40 44V34H44V44H40Z" fill="#0057B7"/>
+                        <path d="M18 34L22 30L26 34H18ZM26 30L32 24L38 30H26ZM38 34L42 30L46 34H38Z" fill="#0057B7"/>
+                        <path d="M31 18H33V23H31V18ZM29 20H35V22H29V20Z" fill="#0057B7"/>
+
+                        <!-- Яркие часы -->
+                        <circle cx="44" cy="44" r="10" fill="#FFFFFF" stroke="#D69E2E" stroke-width="2.5"/>
+                        <path d="M44 38V44L48 46" stroke="#D69E2E" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
             </div>
 
         </div>
@@ -171,7 +224,7 @@
         </div>
     </div>
 </section>
-
+<div class="section-divider"></div> 
 
 <section class="workflow-section">
     <div class="content-wrapper">
@@ -437,8 +490,8 @@
     <div class="footer-bottom">
         <p>© 2026 DELUX PASS. Все права защищены.</p>
         <div class="legal-links">
-            <a href="javascript:void(0)" onclick="openModal('impressum')">Impressum</a> | 
-            <a href="javascript:void(0)" onclick="openModal('privacy')">Datenschutz</a>
+            <a href="/impressum.html" class="cookie-link">Impressum</a> | 
+            <a href="/privacy.html" class="cookie-link">Datenschutzerklärung</a>
         </div>
     </div>
 
@@ -458,4 +511,16 @@
 
 <script src="script.js"></script>
 </body>
+<div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+        <p class="cookie-text">
+            Мы используем файлы cookie, чтобы улучшить работу сайта. 
+            Продолжая использовать сайт, вы соглашаетесь с нашей <a href="/privacy.html" class="cookie-link">Политикой</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button id="cookie-reject" class="cookie-btn cookie-btn-secondary">Отклонить</button>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+</div>
 </html>

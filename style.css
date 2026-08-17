@@ -41,11 +41,11 @@ section { /* общие настройки секций */
     padding: 100px 0 !important; /* Больше отступов = больше "дороговизны" */
     overflow: hidden;
 }
-/*.section-divider { /* мини-блок линия между секциями */
-/*    height: 2px;
+.section-divider { /* мини-блок линия между секциями */
+    height: 2px;
     width: 100%;
     background: linear-gradient(90deg, transparent, #0057b7, transparent);
-}*/
+}
 h2 {
     font-size: 2rem;
     margin: 0px 0 20px 0px;
@@ -587,124 +587,263 @@ html body .floating-tg:hover {
 /* секция статистики __________________________________________________________________________________________________________________________________________________________________*/
 /* --- БЛОК СТАТИСТИКИ --- */
 .stats-section {
-    padding-bottom: 10px; 
-    background-color: #ffffff; 
+    padding: 90px 0;
+    background-color: #f8fafc;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230057b7" fill-opacity="0.05" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,165.3C960,181,1056,171,1152,149.3C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
 }
 
 .stats-container {
-    max-width: 1140px; /* Стандартная ширина контентной зоны для баланса */
-    margin: auto;
+    max-width: 1140px;
+    margin: 0 auto;
     display: grid;
-    /* Левая колонка шире (как в блоке паспортов), чтобы заголовок не зажимался */
-    grid-template-columns: 340px 1fr; 
-    gap: 100px;
+    /* Резиновая сетка вместо 340px */
+    grid-template-columns: minmax(280px, 1fr) 2fr; 
+    gap: 60px;
     padding: 0 24px;
-    align-items: start;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 /* --- ЛЕВАЯ ЧАСТЬ: ЗАГОЛОВОК --- */
 .stats-header h2 {
-    margin-top: 120px;
     font-family: 'Inter', sans-serif;
     font-size: 34px;
     font-weight: 700;
     color: #1a202c;
     line-height: 1.25;
-    letter-spacing: -0.5px; /* Чуть собраннее для массивного заголовка */
+    letter-spacing: -0.5px;
+    margin: 0 0 16px 0;
 }
 
 .stats-subtitle {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    color: #8a94a6; /* Чуть мягче серый */
-    margin-top: 20px;
+    font-size: 15px;
+    color: #718096;
+    margin: 0;
     line-height: 1.6;
-    letter-spacing: 0.3px;
 }
 
-/* --- ПРАВАЯ ЧАСТЬ: СЕТКА С ЦИФРАМИ --- */
+/* --- ПРАВАЯ ЧАСТЬ: СЕТКА С КАРТОЧКАМИ --- */
 .stats-grid {
-    margin-top: 100px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 55px 60px; /* Больше свободного пространства между карточками */
-}
-
-/* Элемент статистики */
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* Увеличили отступ от текста до шкалы, чтобы убрать «зажатость» */
-}
-
-/* Контейнер текста и цифры */
-.stat-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; /* Выравнивание по нижней линии шрифта */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-/* Подписи к цифрам (Шрифты и трекинг) */
-.stat-label {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 14px; /* Чуть меньше размер, но аккуратнее */
-    color: #4a5568; 
-    line-height: 1.5;
-    letter-spacing: 0.2px; /* Легкий отступ между буквами для читаемости */
+/* --- СТИЛИ КАРТОЧЕК --- */
+.stat-card {
+    position: relative;
+    border-radius: 16px;
+    padding: 24px 20px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Полупрозрачная белая подложка для читаемости текста поверх изображений */
+.stat-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* 82% белого поверх фоновой картинки */
+    z-index: 1;
+}
+
+.stat-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 /* Цифры */
 .stat-number {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: 28px; /* Сделали чуть крупнее для акцента */
+    font-size: 32px;
     color: #0057b7; 
-    line-height: 1;  /* Убираем лишние невидимые отступы у цифр */
+    line-height: 1;
     white-space: nowrap;
 }
 
-/* --- ИЗЯЩНЫЕ ШКАЛЫ --- */
-.progress-bar {
-    width: 100%;
-    height: 2px; /* Тонкая, ювелирная линия вместо 4px. Выглядит в разы дороже */
-    background-color: #eeeeee; /* Чистая аккуратная подложка трека */
-    border-radius: 1px;
-    overflow: hidden;
+/* Подписи к цифрам */
+.stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: #2d3748; 
+    line-height: 1.4;
+}
+
+/* --- ФОНОВЫЕ ИЗОБРАЖЕНИЯ КАРТОЧЕК --- */
+/* Замените ссылки 'images/...' на реальные пути к вашим изображениям */
+.stat-card-clients {
+    background-color: #f8fafc; /* Карточку с клиентами можно оставить светлой или тоже добавить картинку */
+}
+.stat-card-clients {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
     position: relative;
+    border-left: 4px solid #8eb7e2; /* Синяя акцентная полоска */
 }
 
-.progress-line {
-    height: 100%;
-    background: linear-gradient(to right, #0057b7 0%, #ff6b6b 100%);
-    border-radius: 1px;
-    
-    width: 0; 
-    transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1); /* Плавный инерционный вылет */
+.stat-icon-clients {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    margin-left: 12px;
 }
 
-.stats-section.animated .progress-line {
-    width: var(--progress-width);
+/* На мобильных устройствах уменьшаем иконку */
+@media (max-width: 640px) {
+    .stat-icon-clients {
+        width: 48px;
+        height: 48px;
+    }
+}
+.stat-card-passport {
+    background-image: url('images/passport-bg.jpg');
+}
+.stat-card-passport {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fcf8f8; /* Мягкий тепло-белый фон */
+    position: relative;
+    border-left: 4px solid #8B1E2D; /* Бордовый акцент слева под цвет паспорта */
 }
 
-/* --- АДАПТИВНОСТЬ --- */
+.stat-icon-passport {
+    width: 58px;
+    height: 72px;
+    flex-shrink: 0;
+    margin-left: 12px;
+    filter: drop-shadow(0px 4px 8px rgba(139, 30, 45, 0.15));
+}
+
+/* На адаптивности уменьшаем иконку */
+@media (max-width: 640px) {
+    .stat-icon-passport {
+        width: 44px;
+        height: 56px;
+    }
+}
+
+.stat-card-flags {
+    background-image: url('images/flags-bg.jpg');
+}
+.stat-card-flags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
+    position: relative;
+    border-left: 4px solid #8eb7e2; /* Синий акцент */
+}
+
+.stat-icon-flags {
+    width: 72px;
+    height: 64px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    filter: drop-shadow(0px 3px 6px rgb(24, 37, 156));
+}
+
+@media (max-width: 640px) {
+    .stat-icon-flags {
+        width: 56px;
+        height: 50px;
+    }
+}
+.stat-card-hamburg {
+    background-image: url('images/hamburg-bg.jpg');
+}
+.stat-card-hamburg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
+    position: relative;
+    border-left: 4px solid #D4AF37; /* Золотой акцент для подчеркивания статуса и опыта */
+}
+
+.stat-icon-hamburg {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    filter: drop-shadow(0px 3px 6px rgba(0, 87, 183, 0.12));
+}
+
+@media (max-width: 640px) {
+    .stat-icon-hamburg {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ И ПЛАНШЕТОВ --- */
 @media (max-width: 992px) {
     .stats-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding-top: 80px;
+        grid-template-columns: 1fr; /* Заголовок встает над сеткой */
+        gap: 32px;
     }
 }
 
 @media (max-width: 640px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .stats-section {
+        padding: 40px 0;
     }
+
     .stats-header h2 {
-        font-size: 28px;
+        font-size: 26px;
+        white-space: normal; /* Гарантия от сдвига вправо на смартфонах */
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* На телефонах карточки идут 2х2 */
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px 12px;
+        min-height: 110px;
+        border-radius: 12px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .stats-grid {
+        grid-template-columns: 1fr; /* Для совсем узких экранов карточки встают по одной */
     }
 }
 /* секция почему мы? (deleted)__________________________________________________________________________________________________________________________________________________________________*/
@@ -796,10 +935,6 @@ html body .floating-tg:hover {
 
 
 /* ваш путь к результату __________________________________________________________________________________________________________________________________________________________*/
-.workflow-section {
-    padding: 100px 0;
-    background: #ffffff; /* Белый фон, чтобы отличить от серого блока преимуществ */
-}
 
 .process-wrapper {
     display: flex;
@@ -1294,10 +1429,8 @@ html body .floating-tg:hover {
 }
 /* КАК МЫ РАБОТАЕМ ___________________________________________________________________________________________________________________________________________________________ */
 .workflow-section {
-    background: #ffffff;
-    padding: 80px 0;
-    position: relative;
-    z-index: 10; /* Чтобы этот блок перекрывал стопку при скролле вверх */
+padding: 80px 0;
+    background: radial-gradient(circle at 50% 50%, #f0f7ff 0%, #ffffff 70%);
 }
 
 .workflow-header {
@@ -1640,8 +1773,10 @@ footer {
 }
 
 .footer-column {
-    width: 385px;
-    height: 268px;
+    width: 100%;
+    max-width: 385px;
+    min-height: 268px; /* вместо height, чтобы блок мог расширяться при переносе текста */
+    box-sizing: border-box; /* гарантирует, что паддинги не будут увеличивать ширину */
 }
 /* Нижняя панель */
 .footer-bottom {
@@ -1723,7 +1858,128 @@ footer {
         justify-content: center;
     }
 }
+/* --- БАННЕР КУКИ --- */
+.cookie-banner {
+    position: fixed;
+    bottom: -100px; /* Изначально спрятан снизу */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 850px;
+    background-color: #1a202c; /* Темный благородный фон */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая рамка */
+    border-radius: 12px;
+    padding: 16px 24px;
+    z-index: 9999; /* Поверх всех элементов */
+    transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Плавный выезд */
+}
 
+/* Класс активации баннера */
+.cookie-banner.show {
+    bottom: 24px; /* Приподнимаем над нижним краем */
+}
+
+.cookie-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Текст внутри баннера */
+.cookie-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cookie-link {
+    color: #ff4d4d; /* Твой фирменный красный */
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.cookie-link:hover {
+    text-decoration: underline;
+}
+
+
+.cookie-buttons {
+    display: flex;
+    flex-direction: row; /* Выстраиваем кнопки по горизонтали */
+    flex-wrap: nowrap;   /* Запрещаем кнопкам переноситься друг под друга */
+    gap: 12px;           /* Расстояние между кнопками */
+    align-items: center;
+    flex-shrink: 0;      /* Запрещаем контейнеру кнопок сжиматься */
+}
+/* Кнопка "Принять" */
+.cookie-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #2378f8;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 24px;
+    cursor: pointer;
+    white-space: nowrap; /* Запрещаем тексту внутри кнопки переноситься */
+    transition: all 0.2s ease;
+}
+
+.cookie-btn:hover {
+    background-color: #0db5df;
+    transform: translateY(-1px);
+}
+
+.cookie-btn:active {
+    transform: translateY(1px);
+}
+/* Кнопка "Отклонить" (второстепенная — аккуратная, серая, не отвлекает внимание) */
+.cookie-btn-secondary {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-btn-secondary:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+/* Адаптив под мобилки */
+@media (max-width: 640px) {
+    .cookie-banner {
+        width: 100%;
+        bottom: -200px;
+        border-radius: 12px 12px 0 0; /* На мобилках скругление только сверху */
+        padding: 20px;
+    }
+    .cookie-banner.show {
+        bottom: 0; /* Прижимаем к самому низу на телефонах */
+    }
+    .cookie-content {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        text-align: center;
+    }
+    .cookie-buttons {
+        flex-direction: column-reverse; /* На мобилках "Принять" окажется сверху, так удобнее кликать */
+        width: 100%;
+        gap: 8px;
+    }
+    .cookie-btn {
+        width: 100%; /* Обе кнопки на весь экран телефона */
+        text-align: center;
+    }
+}
 
 
 

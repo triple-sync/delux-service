@@ -324,13 +324,111 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Если блок показался на экране хотя бы на 20%
             if (entry.isIntersecting) {
-                statsSection.classList.add('animated');
-                statsObserver.unobserve(entry.target); // Отключаем слежку, чтобы анимация была один раз
+                // Добавляем задержку в 500мс (полсекунды) перед запуском анимации
+                setTimeout(() => {
+                    statsSection.classList.add('animated');
+                }, 500); 
+                
+                statsObserver.unobserve(entry.target); 
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.9 }); // Сработает, когда блок почти полностью на экране
 
     statsObserver.observe(statsSection);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAcceptBtn = document.getElementById('cookie-accept');
+    const cookieRejectBtn = document.getElementById('cookie-reject');
+
+    if (!cookieBanner || !cookieAcceptBtn || !cookieRejectBtn) return;
+
+    // Проверяем, делал ли уже пользователь выбор (неважно, принял или отклонил)
+    const cookieConsent = localStorage.getItem('cookieConsent'); 
+    const consentTimestamp = localStorage.getItem('cookieConsentTimestamp');
+    const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+
+    const isChoiceValid = cookieConsent !== null && 
+                          consentTimestamp && 
+                          (Date.now() - parseInt(consentTimestamp)) < thirtyDaysInMs;
+
+    // Если выбора еще нет, показываем баннер через 2 секунды
+    if (!isChoiceValid) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 2000);
+    }
+
+    // Функция закрытия баннера и сохранения выбора
+    const saveChoice = (consentStatus) => {
+        localStorage.setItem('cookieConsent', consentStatus); // 'accepted' или 'rejected'
+        localStorage.setItem('cookieConsentTimestamp', Date.now().toString());
+        cookieBanner.classList.remove('show');
+    };
+
+    // Клик на "Принять"
+    cookieAcceptBtn.addEventListener('click', () => {
+        saveChoice('accepted');
+        // Здесь можно запустить счетчики метрик, если они у тебя есть
+    });
+
+    // Клик на "Отклонить"
+    cookieRejectBtn.addEventListener('click', () => {
+        saveChoice('rejected');
+        // Здесь скрипты метрик НЕ запускаются, работают только технические куки сайта
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const statsSection = document.querySelector('.stats-section');
+    const numbers = document.querySelectorAll('.stat-number');
+    let animated = false;
+
+    // Скорость анимации: чем больше значение, тем МЕДЛЕННЕЕ анимация (в миллисекундах)
+    const DURATION = 3000; // 3 секунды
+
+    function animateNumbers() {
+        numbers.forEach(numElement => {
+            const target = +numElement.getAttribute('data-target');
+            const postfix = numElement.getAttribute('data-postfix') || '+'; // по умолчанию плюс, если не указано иное
+            const startTime = performance.now();
+
+            function updateCount(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / DURATION, 1);
+
+                // Функция плавности (Ease-Out): цифры сначала бегут быстро, а под конец замедляются
+                const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+                
+                const currentCount = Math.floor(easeOutProgress * target);
+
+                // Форматируем число с разделителем тысяч (например, 5 400 вместо 5400)
+                numElement.textContent = currentCount.toLocaleString('ru-RU') + postfix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    numElement.textContent = target.toLocaleString('ru-RU') + postfix;
+                }
+            }
+
+            requestAnimationFrame(updateCount);
+        });
+    }
+
+    // Запуск анимации строго при появлении блока на экране
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animateNumbers();
+                animated = true; // Запускаем только 1 раз
+            }
+        });
+    }, { threshold: 0.3 }); // Блок должен появиться на 30% в зоне видимости
+
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
 });
