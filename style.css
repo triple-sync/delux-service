@@ -1428,16 +1428,96 @@ html body .floating-tg:hover {
     }
 }
 /* КАК МЫ РАБОТАЕМ ___________________________________________________________________________________________________________________________________________________________ */
+:root {
+    --accent-color: #0057b7; /* Цвет элементов внутри иконки */
+    --workflow-bg-color: #f0f4f8; /* Задайте нужный цвет заливки секции */
+}
+
+/* Настройка фона секции */
 .workflow-section {
-padding: 80px 0;
-    background: radial-gradient(circle at 50% 50%, #f0f7ff 0%, #ffffff 70%);
+    position: relative;
+    background-color: var(--workflow-bg-color);
+    padding: 80px 0;
+}
+
+/* Фиксация родительского контейнера */
+.workflow-section .container {
+    position: relative;
+}
+
+/* Белый круг с градиентным размытием краев (Fade) */
+/* Контейнер волны, привязанный к левому краю секции */
+.wave-badge-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 40px;
+}
+
+/* Фновая мягкая волна */
+.badge-wave-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+    z-index: -1;
+}
+
+/* Сам список: вытянут вертикально, отлично масштабируется */
+.checklist-icon-large {
+    width: 200px;
+    height: auto;
+    max-height: 85%;
+    filter: drop-shadow(0px 8px 20px rgba(0, 87, 183, 0.08));
+}
+
+/* Сдвигаем текстовый контент, чтобы он не налезал на волну */
+.workflow-section .section-header,
+.workflow-section .process-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Адаптив под планшеты и мобильные */
+@media (max-width: 1024px) {
+    .wave-badge-wrapper {
+        display: none;
+    }
+    .workflow-section .section-header,
+    .workflow-section .process-wrapper {
+        margin-left: 0;
+    }
+}
+.accent-fill { fill: var(--accent-color); }
+.accent-stroke { stroke: var(--accent-color); }
+
+/* Адаптив: скрываем круг на экранах меньше 1024px, чтобы не перекрывать текст */
+@media (max-width: 1024px) {
+    .circle-badge {
+        display: none;
+    }
 }
 
 .workflow-header {
     margin-bottom: 50px;
     text-align: left;
 }
-
+.step-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important; /* Выравнивание строго по верхнему краю */
+    width: 100%;
+    margin-bottom: 15px;
+}
 .steps-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1461,9 +1541,198 @@ padding: 80px 0;
     font-size: 2.5rem;
     font-weight: 800;
     color: rgba(0, 87, 183, 0.1);
-    margin-bottom: 15px;
+    line-height: 0.8 !important; /* Убирает лишнюю высоту строки у цифры */
+    margin: 0 !important;
 }
 
+/*karta 01 telephone*/
+.step-extra {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Размеры иконок в карточках */
+/* Иконка телефона */
+.phone-icon {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin-top: -40px; /* Поднимает иконку ровно на уровень верха цифр */
+}
+.phone-color-fill {
+    fill: rgba(0, 87, 183, 0.25);
+    transition: fill 0.3s ease;
+}
+.phone-color-stroke {
+    stroke: rgba(0, 87, 183, 0.25);
+    transition: stroke 0.3s ease;
+}
+/* Плавность движения трубки */
+/* Анимация подъема трубки */
+.phone-handset {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center;
+}
+
+/*karta 02 document*/
+/* Размеры и подгонка верхнего отступа */
+.doc-icon {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin-top: -40px;
+}
+
+/* Цвета по умолчанию */
+.doc-color-fill {
+    fill: rgba(0, 87, 183, 0.25);
+    transition: fill 0.3s ease;
+}
+
+.doc-color-fill-light {
+    fill: rgba(0, 87, 183, 0.05);
+    transition: fill 0.3s ease;
+}
+
+.doc-color-stroke {
+    stroke: rgba(0, 87, 183, 0.25);
+    transition: stroke 0.3s ease;
+}
+
+/* Начальное состояние развернутой ручки */
+.doc-pen {
+    transform-origin: 52px 46px; /* Точка вращения на кончике */
+    transition: transform 0.3s ease;
+}
+
+/* Обновленная анимация движения ручки вправо */
+@keyframes sign-motion {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    30% {
+        /* Наклон вправо и касание бумаги */
+        transform: translate(-22px, -2px) rotate(25deg);
+    }
+    60% {
+        /* Первое движение росчерка */
+        transform: translate(-18px, 3px) rotate(20deg);
+    }
+    85% {
+        /* Второе движение росчерка */
+        transform: translate(-12px, -4px) rotate(15deg);
+    }
+    100% {
+        /* Остановка ручки с наклоном вправо */
+        transform: translate(-10px, -2px) rotate(20deg);
+    }
+}
+
+/* Запуск при ховере */
+.step-card:hover .doc-pen {
+    animation: sign-motion 0.7s ease-in-out forwards;
+}
+
+.step-card:hover .doc-color-fill {
+    fill: rgba(0, 87, 183, 0.5);
+}
+
+.step-card:hover .doc-color-fill-light {
+    fill: rgba(0, 87, 183, 0.12);
+}
+
+.step-card:hover .doc-color-stroke {
+    stroke: rgba(0, 87, 183, 0.5);
+}
+
+/*karta 03 crest*/
+/* Размеры и подгонка верхнего отступа */
+.crest-icon {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin-top: -40px;
+}
+
+/* Приглушенные цвета по умолчанию */
+.crest-color-fill {
+    fill: rgba(0, 87, 183, 0.25);
+    transition: fill 0.3s ease;
+}
+
+.crest-color-stroke {
+    stroke: rgba(0, 87, 183, 0.25);
+    transition: stroke 0.3s ease;
+}
+
+/* При наведении на карточку герб просто подсвечивается */
+.step-card:hover .crest-color-fill {
+    fill: rgba(0, 87, 183, 0.5);
+}
+
+.step-card:hover .crest-color-stroke {
+    stroke: rgba(0, 87, 183, 0.5);
+}
+
+/* При наведении: трубка поднимается, а цвет становится слегка насыщеннее */
+.step-card:hover .phone-handset {
+    transform: translateY(-6px) rotate(-3deg);
+}
+
+.step-card:hover .phone-color-fill {
+    fill: rgba(0, 87, 183, 0.5);
+}
+
+.step-card:hover .phone-color-stroke {
+    stroke: rgba(0, 87, 183, 0.5);
+}
+
+/* При наведении на ВСЮ карточку трубка взлетает вверх и слегка поворачивается */
+.step-card:hover .phone-handset {
+    transform: translateY(-7px) rotate(-3deg);
+}
+
+
+
+/*karta 04 handshake*/
+/* Размеры и подгонка верхнего отступа */
+.handshake-icon {
+    width: 52px;
+    height: 52px;
+    display: block;
+    margin-top: -42px;
+}
+
+/* Цвет фигуры (полупрозрачный синий в тон сайта) */
+.handshake-path {
+    fill: rgba(0, 87, 183, 0.25);
+    transition: fill 0.3s ease;
+}
+
+/* Точка вращения ровно по центру иконки */
+.handshake-hands {
+    transform-origin: 256px 256px;
+}
+
+/* Анимация плавного качания вверх-вниз */
+@keyframes handshake-shake {
+    0% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-4px) rotate(-1.5deg); }
+    50% { transform: translateY(2px) rotate(1deg); }
+    75% { transform: translateY(-2px) rotate(-0.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Эффекты при наведении на карточку */
+.step-card:hover .handshake-hands {
+    animation: handshake-shake 0.8s ease-in-out infinite;
+}
+
+.step-card:hover .handshake-path {
+    fill: rgba(0, 87, 183, 0.55);
+}
 .step-card h3 {
     margin-bottom: 10px;
     color: #0059b8;
