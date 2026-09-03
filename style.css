@@ -376,7 +376,7 @@ html body .floating-tg:hover {
     position: relative; /* наложение оверлея и контента */
     width: 100%; /* ширина */
     height: 100vh; /* 100% высоты видимой части экрана */
-    background-image: url('start.png'); /* картинка фона */
+    background-image: url('start1.png'); /* картинка фона */
     background-size: cover; /* растяжение картинки, чтобы закрыть все пространство */
     background-position: center; /* центрирование картинки */
     display: flex; /* свободное положение блоков */
